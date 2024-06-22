@@ -1,14 +1,14 @@
 import sys
-# append dir 
-sys.path.insert(0, 'medbot-arm/model')
-sys.path.insert(1, 'medbot-arm/services')
+import os
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'services')))
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'model')))
 
 from fastapi import FastAPI
 from io import BytesIO
 from contextlib import closing
 from tempfile import NamedTemporaryFile
-from services.TextToSpeechServices import TextToSpeechServices
-from model.TextToSpeechRequests import TextToSpeechRequests
+from TextToSpeechServices import TextToSpeechServices
+from TextToSpeechRequests import TextToSpeechRequests
 
 app = FastAPI()
 

@@ -4,4 +4,5 @@ from typing import Optional
 
 class TextToSpeechRequests(BaseModel):
     data: bytes = File(...)
-    model_path: Optional[str] = "models/ggml-small.bin"
+    # Model path
+    path: Optional[str] = "models/ggml-small.bin"
