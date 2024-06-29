@@ -18,5 +18,5 @@ bash scripts/download_models.sh
 ### 4. Run program locally
 ```
 cd controllers
-uvicorn main:app --reload --port=8000 --host=0.0.0.0
+fastapi dev
 ```
