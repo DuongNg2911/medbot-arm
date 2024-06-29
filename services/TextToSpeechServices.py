@@ -2,12 +2,10 @@ import whisper
 import torch
 
 class TextToSpeechServices:
-    def __init__(self, device, model_name, audio) -> None:
-        self.model = whisper.load_model(name=model_name, device=device)
+    def __init__(self, device, audio) -> None:
+        self.model = whisper.load_model(name="../models/ggml-small.bin", device=device)
         self.options = whisper.DecodingOptions(language="vie", without_timestamps=True)
         self.audio = audio
-
-        self.__generate_text()
 
     def __audio_processing(self):
         audio = whisper.load_audio(self.audio)
@@ -21,7 +19,7 @@ class TextToSpeechServices:
         _, probs = self.model.detect_language(mel)
         return probs
     
-    def __generate_text(self):
+    def generate_text(self):
         mel = self.__audio_processing()
         probs = self.__language_detection(mel)
         self.language = max(probs, key=probs.get)
